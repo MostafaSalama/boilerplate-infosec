@@ -187,8 +187,8 @@ var ninetyDaysInMilliseconds = 90 * 24 * 60 * 60 * 1000;
 
 module.exports = app;
 const api = require('./server.js');
-app.use(helmet());
-app.use(helmet.hidePoweredBy());
+app.use(helmet.frameguard({ action: 'deny' }));
+app.use(helmet.hidePoweredBy({ setTo: 'PHP' }));
 app.use(express.static('public'));
 app.disable('strict-transport-security');
 app.use('/_api', api);
