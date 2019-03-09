@@ -189,6 +189,7 @@ module.exports = app;
 const api = require('./server.js');
 app.use(helmet.frameguard({ action: 'deny' }));
 app.use(helmet.hidePoweredBy({ setTo: 'PHP' }));
+app.use(helmet.xssFilter());
 app.use(express.static('public'));
 app.disable('strict-transport-security');
 app.use('/_api', api);
