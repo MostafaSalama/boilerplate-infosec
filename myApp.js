@@ -187,6 +187,7 @@ var ninetyDaysInMilliseconds = 90 * 24 * 60 * 60 * 1000;
 
 module.exports = app;
 const api = require('./server.js');
+app.use(helmet.dnsPrefetchControl());
 app.use(helmet.hsts({ maxAge: ninetyDaysInMilliseconds }));
 app.use(helmet.ieNoOpen());
 app.use(helmet.noSniff());
