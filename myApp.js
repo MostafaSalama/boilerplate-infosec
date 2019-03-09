@@ -2,9 +2,9 @@
 * 4. Applied InfoSec Challenges
 * =============================
 ***********************************************/
-
 var express = require('express'); // Do Not Edit
 var app = express();              // Do Not Edit
+const helmet = require('helmet') ;
 
 // ----
 
@@ -206,6 +206,7 @@ var ninetyDaysInMilliseconds = 90*24*60*60*1000;
 
 module.exports = app;
 var api = require('./server.js');
+app.use(helmet());
 app.use(express.static('public'));
 app.disable('strict-transport-security');
 app.use('/_api', api);
